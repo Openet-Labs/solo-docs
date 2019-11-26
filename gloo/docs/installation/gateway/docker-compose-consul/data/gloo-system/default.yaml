@@ -9,7 +9,7 @@ bindAddr: 0.0.0.0:9977
 # connection options for consul
 consul:
   # address of the consul agent/server
-  address: host.docker.internal:8500
+  address: consul:8500
   # enable service discovery using consul
   serviceDiscovery: {}
 
@@ -19,7 +19,7 @@ consulKvSource: {}
 # enable secrets to be read from Vault
 vaultSecretSource:
   # address of the vault server
-  address: http://host.docker.internal:8200
+  address: http://vault:8200
   # vault auth token
   token: root
 
