@@ -3,8 +3,11 @@ metadata:
   name: default
   namespace: gloo-system
 
-# bind address for gloo's configuration server
-bindAddr: 0.0.0.0:9977
+
+devMode: true
+gloo:
+  xdsBindAddr: 0.0.0.0:9977
+
 
 # connection options for consul
 consul:
@@ -36,6 +39,10 @@ discoveryNamespace: gloo-system
 # refresh rate for polling config backends for changes
 # this is used for watching vault secrets and the local filesystem
 refreshRate: 15s
+
+discovery: {}
+
+gateway: {}
 
 # status will be reported by Gloo as "Accepted"
 # if booted successfully
