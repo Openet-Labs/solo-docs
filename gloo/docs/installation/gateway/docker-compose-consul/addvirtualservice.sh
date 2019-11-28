@@ -1,2 +1,2 @@
-curl -v     -XPUT     --data-binary "@virtual-service.yaml"     "http://127.0.0.1:8500/v1/kv/gloo/gateway.solo.io/v1/VirtualService/gloo-system/default"
+glooctl --use-consul --consul-address=localhost:8500 add route --path-exact /sample-route-1 --dest-name petstore --prefix-rewrite /api/pets 
 

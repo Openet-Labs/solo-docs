@@ -52,9 +52,15 @@ services:
     - "--dir=/data/"
     volumes:
     - ./data:/data/
+    - /home/michal/.kube/:/kube/
     ports:
     - "9977:9977"
     restart: always
+    environment:
+      DISABLE_USAGE_REPORTING: "true"
+      START_STATS_SERVER: "false"
+      KUBECONFIG: /kube/config
+      
 
   discovery:
     container_name: discovery
@@ -80,7 +86,7 @@ services:
     container_name: proxy
     image: ${GLOO_REPO:-quay.io/solo-io}/gloo-envoy-wrapper:${GLOO_VERSION:-0.18.3}
     entrypoint: ["envoy"]
-    command: ["-c", "/config/envoy.yaml", "--disable-hot-restart"]
+    command: ["-c", "/config/envoy.yaml", "--disable-hot-restart", "--log-level", "debug", "--component-log-level", "upstream:debug,connection:trace"]
     volumes:
     - ./data/envoy-config.yaml:/config/envoy.yaml:ro
     ports:

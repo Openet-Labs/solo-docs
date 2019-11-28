@@ -1,6 +1,6 @@
 {
   "ID": "petstore1",
   "Name": "petstore",
-  "Address": "192.168.224.3",
+  "Address": "172.28.0.8",
   "Port": 8080
 }
